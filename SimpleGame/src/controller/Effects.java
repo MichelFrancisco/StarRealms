@@ -32,7 +32,7 @@ public class Effects {
 	}
 
 	// Cherche de quel effet il s'agit et effectue une action en conséquence
-	public void applyEffect(Player p,Player badGuy) {
+	public void applyEffect(Player p,Player badGuy,Shop shop,Deck deckShop) {
 		if (target == "combat") p.addCombat(value);
 		else if (target == "trade") p.addTrade(value);
 		else if (target == "authority") p.addAuthority(value);
@@ -41,6 +41,9 @@ public class Effects {
 				p.drawCard();
 			}
 		}
+		
+		
+
 		else if(target == "or" && e2 != null) {
 			Scanner lectureClavier = new Scanner(System.in);
 			int end = 0;
@@ -48,10 +51,10 @@ public class Effects {
 				Visuel.ChoixEffet(e1, e2);
 				int rep = lectureClavier.nextInt();
 				switch(rep) {
-				case 1: e1.applyEffect(p,badGuy);
+				case 1: e1.applyEffect(p, badGuy, shop, deckShop);
 						end = 1;
 						break;
-				case 2: e2.applyEffect(p,badGuy);
+				case 2: e2.applyEffect(p, badGuy, shop, deckShop);
 						end = 1;
 						break;
 				default: System.out.println("Valeur choisie invalide");
@@ -59,10 +62,14 @@ public class Effects {
 			}
 		}
 		else if(target == "and" && e2 != null) {
-			e1.applyEffect(p, badGuy);
-			e2.applyEffect(p, badGuy);
+			e1.applyEffect(p, badGuy, shop, deckShop);
+			e2.applyEffect(p, badGuy, shop, deckShop);
 		}
 		else if(target == "destroyBase") destroyBase(badGuy);
+		else if(target == "scrapTrade") scrapTrade(shop, deckShop);
+		else if(target == "scrapDeck") scrapDeck(p);
+		else if(target == "scrapHand") scrapHand(p, badGuy, shop, deckShop);
+		else if(target == "scrapGrave") scrapGrave(p);
 	}
 
 	
@@ -92,6 +99,66 @@ public class Effects {
 	}
 
 
+	public void scrapTrade(Shop shop,Deck deckShop) {
+		Scanner lectureClavier = new Scanner(System.in);
+		int end = 0;
+		while(end==0) {
+			Visuel.ScrapTrade(shop);
+			int rep = lectureClavier.nextInt();
+			if (rep > 0 && rep <= shop.size()) {
+				shop.remove(rep);
+				shop.fillShop(deckShop);
+				end = 1;
+			}
+			else System.out.println("Entrez une valeur correcte s'il-vous-plait");
+		}
+	}
+	
+	public void scrapDeck(Player p) {
+		Scanner lectureClavier = new Scanner(System.in);
+		int end = 0;
+		while(end==0) {
+			Visuel.ScrapDeck(p);
+			int rep = lectureClavier.nextInt();
+			if (rep > 0 && rep <= p.getDeck().size()) {
+				p.getDeck().remove(rep);
+				end = 1;
+			}
+			else System.out.println("Entrez une valeur correcte s'il-vous-plait");
+		}
+	}
+	
+	public void scrapHand(Player p, Player badGuy, Shop shop, Deck deckShop) {
+		Scanner lectureClavier = new Scanner(System.in);
+		int end = 0;
+		while(end==0) {
+			Visuel.ScrapHand(p);
+			int rep = lectureClavier.nextInt();
+			if (rep > 0 && rep <= p.getHand().size()) {
+				 Cards card = p.getHand().remove(rep);
+				 if (card.getScrapEffect() != null) {
+					 card.getScrapEffect().applyEffect(p, badGuy, shop, deckShop);
+				 }
+				end = 1;
+			}
+			else System.out.println("Entrez une valeur correcte s'il-vous-plait");
+		}
+	}
+	
+	public void scrapGrave(Player p) {
+		Scanner lectureClavier = new Scanner(System.in);
+		int end = 0;
+		while(end==0) {
+			Visuel.ScrapGrave(p);
+			int rep = lectureClavier.nextInt();
+			if (rep > 0 && rep <= p.getGrave().size()) {
+				p.getGrave().remove(rep);
+				end = 1;
+			}
+			else System.out.println("Entrez une valeur correcte s'il-vous-plait");
+		}
+	}
+	
 	public String getTarget() {
 		return target;
 	}

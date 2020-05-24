@@ -41,11 +41,20 @@ public class Shop {
 	public Cards get(int i) {
 		return shop.get(i);
 	}
-
+	
+	public void remove(int x) {
+		shop.remove(x);
+	}
+	
+	public void printShop() {
+		for (Cards cards : shop) {
+			System.out.println(cards);
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return shop.toString();
 	}
-	
 	
 }

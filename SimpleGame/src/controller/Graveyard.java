@@ -13,7 +13,17 @@ public class Graveyard {
 	public void throwCard(Cards card) {
 		grave.add(card);
 	}
-
+	
+	public void remove(int x) {
+		grave.remove(x);
+	}
+	
+	public void printGrave() {
+		for (Cards cards : grave) {
+			System.out.println(cards);
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return grave.toString();

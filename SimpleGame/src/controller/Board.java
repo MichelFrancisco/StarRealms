@@ -15,11 +15,11 @@ public class Board {
 	}
 	
 	// Applique les effets des cartes sur le terrain
-	public void allEffects(Player p, Player badGuy) {
+	public void allEffects(Player p, Player badGuy, Shop shop, Deck deckShop) {
 		for (Cards cards : board) {
-			cards.getEffect().applyEffect(p,badGuy);
+			cards.getEffect().applyEffect(p, badGuy, shop, deckShop);
 			if (cards.getEffect2() != null) {
-				cards.getEffect2().applyEffect(p,badGuy);
+				cards.getEffect2().applyEffect(p, badGuy, shop, deckShop);
 			}
 		}
 	}
@@ -30,9 +30,9 @@ public class Board {
 	}
 	
 	//Permet d'appliquer les effets scrap
-	public void scrap(int x,Player p,Player badGuy) {
+	public void scrap(int x,Player p,Player badGuy, Shop shop, Deck deckShop) {
 		if (board.get(x-1).getScrapEffect() != null) {
-			board.get(x-1).getScrapEffect().applyEffect(p,badGuy);
+			board.get(x-1).getScrapEffect().applyEffect(p, badGuy, shop, deckShop);
 		}
 		board.remove(board.get(x-1));
 	}
@@ -61,10 +61,10 @@ public class Board {
 	}
 	
 	// Applique l'effet allié de la carte
-	public void allyEffect(Player p,Player badGuy) {
+	public void allyEffect(Player p,Player badGuy,Shop shop,Deck deckShop) {
 		for (Cards cards : board) {
 			if (cards.getAllyEffect() != null && searchAlly(cards) == true) {
-				cards.getAllyEffect().applyEffect(p,badGuy);
+				cards.getAllyEffect().applyEffect(p, badGuy, shop, deckShop);
 			}
 		}
 	}

@@ -40,7 +40,7 @@ public class MainTest {
 		Player p1 = new Player();
 		Player p2 = new Player();
 		
-		p1.getDeck().addCard(s12);
+		p1.getDeck().addCard(s13);
 		p2.getDeck().addCard(b3);
 		p2.getDeck().addCard(b3);
 		
@@ -75,5 +75,6 @@ public class MainTest {
 		p1.playCard(1);
 		p1.getBoard().allEffects(p1, p2);
 		System.out.println(p1.getBoard());
+	
 	}
 }

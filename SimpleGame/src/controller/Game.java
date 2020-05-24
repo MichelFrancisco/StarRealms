@@ -87,8 +87,8 @@ public class Game {
 							break;
 							
 					case 2: finPose = true;
-							player.getBoard().allEffects(player,badGuy);
-							player.getBoard().allyEffect(player,badGuy);
+							player.getBoard().allEffects(player,badGuy,shop,deckShop);
+							player.getBoard().allyEffect(player,badGuy,shop,deckShop);
 							break;
 							
 					case 3: 
@@ -100,8 +100,8 @@ public class Game {
 								player.playCard(1);
 							} 
 							finPose = true;
-							player.getBoard().allEffects(player,badGuy);
-							player.getBoard().allyEffect(player,badGuy);
+							player.getBoard().allEffects(player,badGuy,shop,deckShop);
+							player.getBoard().allyEffect(player,badGuy,shop,deckShop);
 							break;
 					
 					default: System.out.println("Entrez un nombre valide");
@@ -137,7 +137,7 @@ public class Game {
 				System.out.println("Quelle carte voulez-vous détruire ?");
 				int nb3 = lectureClavier.nextInt();
 				if (nb3 > 0 && nb3 <= player.getBoard().getLength()) {
-					player.getBoard().scrap(nb3,player,badGuy);
+					player.getBoard().scrap(nb3,player,badGuy,shop,deckShop);
 				}
 				else {
 					System.out.println("Le nombre entré est invalide");
@@ -293,8 +293,8 @@ public class Game {
 				player.playCard(1);
 			} 
 			finPose = true;
-			player.getBoard().allEffects(player,badGuy);
-			player.getBoard().allyEffect(player,badGuy);
+			player.getBoard().allEffects(player,badGuy,shop,deckShop);
+			player.getBoard().allyEffect(player,badGuy,shop,deckShop);
 			
 			// On fait acheter ce qu'il peut à l'IA
 			
@@ -355,8 +355,8 @@ public class Game {
 							break;
 							
 					case 2: finPose = true;
-							player.getBoard().allEffects(player,badGuy);
-							player.getBoard().allyEffect(player,badGuy);
+							player.getBoard().allEffects(player,badGuy,shop,deckShop);
+							player.getBoard().allyEffect(player,badGuy,shop,deckShop);
 							break;
 							
 					case 3: 
@@ -368,8 +368,8 @@ public class Game {
 								player.playCard(1);
 							} 
 							finPose = true;
-							player.getBoard().allEffects(player,badGuy);
-							player.getBoard().allyEffect(player,badGuy);
+							player.getBoard().allEffects(player,badGuy,shop,deckShop);
+							player.getBoard().allyEffect(player,badGuy,shop,deckShop);
 							break;
 					
 					default: System.out.println("Entrez un nombre valide");
@@ -405,7 +405,7 @@ public class Game {
 				System.out.println("Quelle carte voulez-vous détruire ?");
 				int nb3 = lectureClavier.nextInt();
 				if (nb3 > 0 && nb3 <= player.getBoard().getLength()) {
-					player.getBoard().scrap(nb3,player,badGuy);
+					player.getBoard().scrap(nb3,player,badGuy,shop,deckShop);
 				}
 				else {
 					System.out.println("Le nombre entré est invalide");

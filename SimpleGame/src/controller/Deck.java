@@ -77,7 +77,17 @@ public class Deck {
 			deck.add(new Ships(2,"Explorer","Unaligned", new Effects("trade", 2),null, null, new Effects("combat",2)));
 		}
 	}
-
+	
+	public int size() {
+		return deck.size();
+	}
+	
+	public void printDeck() {
+		for (Cards cards : deck) {
+			System.out.println(cards);
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return deck.toString();

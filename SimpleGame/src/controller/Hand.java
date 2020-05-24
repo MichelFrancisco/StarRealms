@@ -30,6 +30,12 @@ public class Hand {
 	public Cards get(int i) {
 		return hand.get(i);
 	}
+	
+	public void printHand() {
+		for (Cards cards : hand) {
+			System.out.println(cards);
+		}
+	}
 
 	@Override
 	public String toString() {

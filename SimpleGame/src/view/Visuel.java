@@ -2,6 +2,7 @@ package view;
 
 import controller.Effects;
 import controller.Player;
+import controller.Shop;
 
 public class Visuel {
 	public static void menu() {
@@ -52,6 +53,26 @@ public class Visuel {
 		System.out.println("Quel effet voulez vous utiliser ?");
 		System.out.printf("[1] %s: %d %n" ,e1.getTarget(), e1.getValue());
 		System.out.printf("[2] %s: %d %n" ,e2.getTarget(), e2.getValue());
+	}
+	
+	public static void ScrapTrade(Shop shop) {
+		System.out.println("Quelle carte voulez-vous scrap ?");
+		shop.printShop();
+	}
+	
+	public static void ScrapDeck(Player p) {
+		System.out.println("Quelle carte voulez-vous scrap ?");
+		p.getDeck().printDeck();
+	}
+	
+	public static void ScrapHand(Player p) {
+		System.out.println("Quelle carte voulez-vous scrap ?");
+		p.getHand().printHand();
+	}
+	
+	public static void ScrapGrave(Player p) {
+		System.out.println("Quelle carte voulez-vous scrap ?");
+		p.getGrave().printGrave();
 	}
 	
 	public static void Explorer() {
