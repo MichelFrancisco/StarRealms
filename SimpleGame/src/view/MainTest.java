@@ -31,7 +31,8 @@ public class MainTest {
 		Ships s11 = new Ships(7,"Mothership","Blob",new Effects("combat",6),new Effects("draw",1),null,new Effects("draw",1));
 		
 		Ships s12 = new Ships(7,"ZEUBI","Blob",new Effects("destroyBase",1),null,null,null);
-		Ships s13 = new Ships(2,"Test","testo",new Effects("or", new Effects("combat", 4), new Effects("draw", 1)));
+		Ships s13 = new Ships(8,"Command Ship","Trade Federation",new Effects("authority",4),new Effects("and",new Effects("combat",5),new Effects("draw",2)),null,new Effects("destroyBase",1));
+
 		
 		Deck deckShop = new Deck();
 		Deck deckExplo = new Deck();
@@ -40,15 +41,11 @@ public class MainTest {
 		Player p1 = new Player();
 		Player p2 = new Player();
 		
-		p1.getDeck().addCard(s12);
-		p2.getDeck().addCard(b3);
-		p2.getDeck().addCard(b3);
-		
+		p1.getDeck().addCard(s13);
+		p1.getDeck().addCard(s13);
+		p1.getDeck().addCard(s13);
 
-		deckShop.addCard(s9);
-		deckShop.addCard(b3);
-		deckShop.addCard(s5);
-		deckShop.addCard(s1);
+		
 		
 		for (int i = 0; i < 2; i++) {
 			deckShop.addCard(b2);
@@ -60,20 +57,19 @@ public class MainTest {
 		for (int i = 0; i < 3; i++) {
 			deckShop.addCard(b1);
 			deckShop.addCard(s8);
-			deckShop.addCard(s6);
+			deckShop.addCard(s6);	
 			deckShop.addCard(s3);
 		}
 		
-		p2.drawCard();
-		p2.drawCard();
-		
-		
 		deckShop.shufDeck();
 		shop.fillShop(deckShop);
-		
+		System.out.println("draw");
 		p1.drawCard();
+		System.out.println("play");
 		p1.playCard(1);
 		p1.getBoard().allEffects(p1, p2);
 		System.out.println(p1.getBoard());
+		System.out.println("main");
+		System.out.println(p1.getHand());
 	}
 }

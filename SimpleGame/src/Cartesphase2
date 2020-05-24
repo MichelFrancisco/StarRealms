@@ -11,3 +11,6 @@ Phase 2 carte crée pas implémenté
 
 	//Trade Federation
 	Ships s12 = new Ships(5,"Trade Escort","Trade Federation",new Effects("authority",4),new Effects("combat",4),null,new Effects("draw",1));
+	Ships s13 = new Ships(8,"Command Ship","Trade Federation",new Effects("authority",4),new Effects("and",new Effects("combat",5),new Effects("draw",2)),null,new Effects("destroyBase",1));
+	
+	Base b6 = new Base(6,"Port of Call","Trade Federation",6,new Effects("trade",3),null,new Effects("and",new Effects("draw",1),new Effects("destroyBase",1)),null,true);
