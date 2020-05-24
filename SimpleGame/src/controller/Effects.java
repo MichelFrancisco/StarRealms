@@ -106,7 +106,7 @@ public class Effects {
 			Visuel.ScrapTrade(shop);
 			int rep = lectureClavier.nextInt();
 			if (rep > 0 && rep <= shop.size()) {
-				shop.remove(rep);
+				shop.remove(rep-1);
 				shop.fillShop(deckShop);
 				end = 1;
 			}
@@ -121,7 +121,7 @@ public class Effects {
 			Visuel.ScrapDeck(p);
 			int rep = lectureClavier.nextInt();
 			if (rep > 0 && rep <= p.getDeck().size()) {
-				p.getDeck().remove(rep);
+				p.getDeck().remove(rep-1);
 				end = 1;
 			}
 			else System.out.println("Entrez une valeur correcte s'il-vous-plait");
@@ -135,7 +135,7 @@ public class Effects {
 			Visuel.ScrapHand(p);
 			int rep = lectureClavier.nextInt();
 			if (rep > 0 && rep <= p.getHand().size()) {
-				 Cards card = p.getHand().remove(rep);
+				 Cards card = p.getHand().remove(rep-1);
 				 if (card.getScrapEffect() != null) {
 					 card.getScrapEffect().applyEffect(p, badGuy, shop, deckShop);
 				 }
@@ -152,7 +152,7 @@ public class Effects {
 			Visuel.ScrapGrave(p);
 			int rep = lectureClavier.nextInt();
 			if (rep > 0 && rep <= p.getGrave().size()) {
-				p.getGrave().remove(rep);
+				p.getGrave().remove(rep-1);
 				end = 1;
 			}
 			else System.out.println("Entrez une valeur correcte s'il-vous-plait");
