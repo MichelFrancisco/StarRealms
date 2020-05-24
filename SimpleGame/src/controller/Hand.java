@@ -32,8 +32,11 @@ public class Hand {
 	}
 	
 	public void printHand() {
+		int compte = 1;
 		for (Cards cards : hand) {
+			System.out.println(compte);
 			System.out.println(cards);
+			compte += 1;
 		}
 	}
 

@@ -83,8 +83,11 @@ public class Deck {
 	}
 	
 	public void printDeck() {
+		int compte = 1;
 		for (Cards cards : deck) {
+			System.out.println(compte);
 			System.out.println(cards);
+			compte += 1;
 		}
 	}
 	

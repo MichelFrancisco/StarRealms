@@ -19,8 +19,11 @@ public class Graveyard {
 	}
 	
 	public void printGrave() {
+		int compte = 1;
 		for (Cards cards : grave) {
 			System.out.println(cards);
+			System.out.println(compte);
+			compte += 1;
 		}
 	}
 	

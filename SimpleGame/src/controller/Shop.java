@@ -47,8 +47,11 @@ public class Shop {
 	}
 	
 	public void printShop() {
+		int compte = 1;
 		for (Cards cards : shop) {
 			System.out.println(cards);
+			System.out.println(compte);
+			compte +=1;
 		}
 	}
 	
