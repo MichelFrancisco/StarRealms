@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="SimpleGame/lib"/>
+	<classpathentry kind="src" path="SimpleGame/src"/>
+	<classpathentry kind="src" path="zen/demo"/>
+	<classpathentry kind="lib" path="zen/zen5.jar"/>
+	<classpathentry kind="output" path="SimpleGame/bin"/>
+</classpath>

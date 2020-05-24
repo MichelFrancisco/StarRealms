@@ -1,0 +1,13 @@
+Phase 2 carte crée pas implémenté
+
+//blob
+	Ships s10 = new Ships(1,"Blob Fighter","Blob",new Effects("combat",3),null,null,new Effects("draw",1));
+	Ships s11 = new Ships(7,"Mothership","Blob",new Effects("combat",6),new Effects("draw",1),null,new Effects("draw",1));
+	
+	Base b4 = new Base(5,"The Hive","Blob",5, new Effects("combat", 3),null,null,new Effects("draw",1) ,false);
+	
+	//Machine cult
+	Base b5 = new Base(3,"Battle Station","Machin Cult",5,null,null,new Effects("combat",5),null,true);
+
+	//Trade Federation
+	Ships s12 = new Ships(5,"Trade Escort","Trade Federation",new Effects("authority",4),new Effects("combat",4),null,new Effects("draw",1));
