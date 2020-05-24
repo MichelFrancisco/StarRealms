@@ -11,4 +11,3 @@ Phase 2 carte crée pas implémenté
 
 	//Trade Federation
 	Ships s12 = new Ships(5,"Trade Escort","Trade Federation",new Effects("authority",4),new Effects("combat",4),null,new Effects("draw",1));
-	zizi
