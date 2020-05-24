@@ -73,7 +73,7 @@ public class MainTest {
 		
 		p1.drawCard();
 		p1.playCard(1);
-		p1.getBoard().allEffects(p1, p2);
+		p1.getBoard().allEffects(p1, p2, shop, deckShop);
 		System.out.println(p1.getBoard());
 	
 	}
