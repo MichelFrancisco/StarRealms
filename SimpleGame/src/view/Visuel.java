@@ -52,7 +52,8 @@ public class Visuel {
 	public static void ChoixEffet(Effects e1, Effects e2) {
 		System.out.println("Quel effet voulez vous utiliser ?");
 		System.out.printf("[1] %s: %d %n" ,e1.getTarget(), e1.getValue());
-		System.out.printf("[2] %s: %d %n" ,e2.getTarget(), e2.getValue());
+		if(e2.getValue() != 0) System.out.printf("[2] %s: %d %n" ,e2.getTarget(), e2.getValue());
+		else System.out.println("[2] Rien du tout");
 	}
 	
 	public static void ScrapTrade(Shop shop) {

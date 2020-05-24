@@ -30,8 +30,8 @@ public class MainTest {
 		Ships s10 = new Ships(1,"Blob Fighter","Blob",new Effects("combat",3),null,null,new Effects("draw",1));
 		Ships s11 = new Ships(7,"Mothership","Blob",new Effects("combat",6),new Effects("draw",1),null,new Effects("draw",1));
 		
-		Ships s12 = new Ships(7,"ZEUBI","Blob",new Effects("destroyBase",1),null,null,null);
-		Ships s13 = new Ships(2,"Test","testo",new Effects("or", new Effects("combat", 4), new Effects("draw", 1)));
+		Ships s12 = new Ships(7,"ZEUBI","Blob",new Effects("scrapDeck",1),null,null,null);
+		Ships s13 = new Ships(2,"Test","testo",new Effects("or", new Effects("scrapTrade",1), new Effects("draw",0)));
 		
 		Deck deckShop = new Deck();
 		Deck deckExplo = new Deck();
@@ -41,8 +41,9 @@ public class MainTest {
 		Player p2 = new Player();
 		
 		p1.getDeck().addCard(s13);
-		p2.getDeck().addCard(b3);
-		p2.getDeck().addCard(b3);
+		p1.getDeck().addCard(s13);
+		p1.getDeck().addCard(s13);
+		p1.getDeck().addCard(s13); 
 		
 
 		deckShop.addCard(s9);
@@ -63,18 +64,21 @@ public class MainTest {
 			deckShop.addCard(s6);
 			deckShop.addCard(s3);
 		}
-		
-		p2.drawCard();
-		p2.drawCard();
+
 		
 		
 		deckShop.shufDeck();
 		shop.fillShop(deckShop);
 		
 		p1.drawCard();
+		p1.drawCard();
 		p1.playCard(1);
 		p1.getBoard().allEffects(p1, p2, shop, deckShop);
 		System.out.println(p1.getBoard());
+		System.out.println("main");
+		System.out.println(p1.getHand());
+		System.out.println("deck");
+		System.out.println(p1.getDeck());
 	
 	}
 }
