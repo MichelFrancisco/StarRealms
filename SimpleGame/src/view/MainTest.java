@@ -31,6 +31,7 @@ public class MainTest {
 		Ships s11 = new Ships(7,"Mothership","Blob",new Effects("combat",6),new Effects("draw",1),null,new Effects("draw",1));
 		
 		Ships s12 = new Ships(7,"ZEUBI","Blob",new Effects("destroyBase",1),null,null,null);
+		Ships s13 = new Ships(2,"Test","testo",new Effects("or", new Effects("combat", 4), new Effects("draw", 1)));
 		
 		Deck deckShop = new Deck();
 		Deck deckExplo = new Deck();
