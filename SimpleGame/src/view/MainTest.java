@@ -31,7 +31,7 @@ public class MainTest {
 		Ships s11 = new Ships(7,"Mothership","Blob",new Effects("combat",6),new Effects("draw",1),null,new Effects("draw",1));
 		
 		Ships s12 = new Ships(7,"ZEUBI","Blob",new Effects("scrapDeck",1),null,null,null);
-		Ships s13 = new Ships(2,"Test","testo",new Effects("or", new Effects("scrapTrade",1), new Effects("draw",0)));
+		Ships s13 = new Ships(2,"Test","testo",new Effects("or", new Effects("scrapGrave",1), new Effects("draw",0)));
 		
 		Deck deckShop = new Deck();
 		Deck deckExplo = new Deck();
@@ -64,21 +64,19 @@ public class MainTest {
 			deckShop.addCard(s6);
 			deckShop.addCard(s3);
 		}
-
-		
 		
 		deckShop.shufDeck();
 		shop.fillShop(deckShop);
 		
+		p1.addTrade(8);
+		shop.buyCard(1, p1);
 		p1.drawCard();
 		p1.drawCard();
 		p1.playCard(1);
 		p1.getBoard().allEffects(p1, p2, shop, deckShop);
 		System.out.println(p1.getBoard());
-		System.out.println("main");
-		System.out.println(p1.getHand());
-		System.out.println("deck");
-		System.out.println(p1.getDeck());
+		System.out.println(p1.getGrave());
+	
 	
 	}
 }

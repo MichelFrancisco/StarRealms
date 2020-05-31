@@ -41,9 +41,6 @@ public class Effects {
 				p.drawCard();
 			}
 		}
-		
-		
-
 		else if(target == "or" && e2 != null) {
 			Scanner lectureClavier = new Scanner(System.in);
 			int end = 0;
@@ -82,7 +79,7 @@ public class Effects {
 			int rep = lectureClavier.nextInt();
 			switch(rep) {
 			case 1:	if(badGuy.getBoard().getBases().size()==0) {
-						System.out.println("L'adversaire ne poss�de pas de base");
+						System.out.println("L'adversaire ne possede pas de base");
 					}
 					else {
 						System.out.printf("Quel base voulez vous detruire (numeroter de 1 a %d)\n",badGuy.getBoard().getBases().size());
