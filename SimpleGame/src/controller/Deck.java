@@ -3,6 +3,8 @@ package controller;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import controller.united.Mission;
+
 public class Deck {
 	private ArrayList<Cards> deck = new ArrayList<Cards>();
 	
@@ -64,6 +66,35 @@ public class Deck {
 			deckShop.addCard(s6);
 			deckShop.addCard(s3);
 		}
+	}
+	
+	public void addMission(Deck missionDeck) {
+		Mission m1 = new Mission("Ally","Use Ally abilities from two different factions in the same turn", "Acquire a ship or base of cost four or less for free and put it on top of your deck");
+		Mission m2 = new Mission("Armada","Play seven or more ships in the same turn", "Draw a card. Acquire an explorer for free and put it in your hand");
+		Mission m3 = new Mission("Colonize","Have two or more bases of the same faction in play", "Draw two cards");
+		Mission m4 = new Mission("Convert","Play a Machine Cult ship while you have a Machine Cult base in play", "Reveal the top three cards of your deck. Put one in your hand, one in you discard pile, and one on top of your deck");
+		Mission m5 = new Mission("Defend","Have two or more outposts in play", "Draw a card. Return target base to it's controller's hand");
+		Mission m6 = new Mission("Diversify","In a single turn, gain: 4 Trade and 5 Combat and 3 Authority", "Add 4 Trade or 5 Combat or 6 Authority");
+		Mission m7 = new Mission("Dominate","Play a Star Empire ship while you have a Star Empire base in play", "Add 3 Combat. Draw a card");
+		Mission m8 = new Mission("Exterminate","Play a Blob ship while you have a Blob base in play", "Add 3 Combat. Scrap any number of cards currently in the trade row");
+		Mission m9 = new Mission("Influence","Have at least three ships and/or bases of the same faction in play", "Acquire two explorers for free and put them both into your hand");
+		Mission m10 = new Mission("Monopolize","Play a Trade Federation ship while you have a Trade Federation base in play", "Add 10 Authority");
+		Mission m11 = new Mission("Rule","Have bases from two or more factions in play", "Acquire a card of cost three or less for free and put it in your hand");
+		Mission m12 = new Mission("Unite","Play three ships from different factions in the same turn", "Add 5 Authority. Draw a card");
+		
+		missionDeck.addCard(m1);
+		missionDeck.addCard(m2);
+		missionDeck.addCard(m3);
+		missionDeck.addCard(m4);
+		missionDeck.addCard(m5);
+		missionDeck.addCard(m6);
+		missionDeck.addCard(m7);
+		missionDeck.addCard(m8);
+		missionDeck.addCard(m9);
+		missionDeck.addCard(m10);
+		missionDeck.addCard(m11);
+		missionDeck.addCard(m12);
+		
 	}
 	
 	// Mélange le deck
