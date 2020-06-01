@@ -7,6 +7,7 @@ import controller.Effects;
 import controller.Player;
 import controller.Ships;
 import controller.Shop;
+import controller.united.Heroes;
 
 public class MainTest {
 	public static void main(String[] args) {
@@ -30,8 +31,7 @@ public class MainTest {
 		Ships s10 = new Ships(1,"Blob Fighter","Blob",new Effects("combat",3),null,null,new Effects("draw",1));
 		Ships s11 = new Ships(7,"Mothership","Blob",new Effects("combat",6),new Effects("draw",1),null,new Effects("draw",1));
 		
-		Ships s12 = new Ships(7,"ZEUBI","Blob",new Effects("scrapDeck",1),null,null,null);
-		Ships s13 = new Ships(2,"Test","testo",new Effects("or", new Effects("scrapGrave",1), new Effects("draw",0)));
+		Heroes h1 = new Heroes(7,"ZEUBI","Unaligned",null,null,null);
 		
 		Deck deckShop = new Deck();
 		Deck deckExplo = new Deck();
@@ -40,43 +40,31 @@ public class MainTest {
 		Player p1 = new Player();
 		Player p2 = new Player();
 		
-		p1.getDeck().addCard(s13);
-		p1.getDeck().addCard(s13);
-		p1.getDeck().addCard(s13);
-		p1.getDeck().addCard(s13); 
+		p1.getDeck().addCard(s1);
+		p1.getDeck().addCard(s1);
+		p1.getDeck().addCard(s1);
+		p1.getDeck().addCard(s1);
+		p1.getDeck().addCard(s1);
+		//p1.getDeck().addCard(s13);
+		//p1.getDeck().addCard(s13);
+		//p1.getDeck().addCard(s13); 
 		
-
-		deckShop.addCard(s9);
-		deckShop.addCard(b3);
-		deckShop.addCard(s5);
-		deckShop.addCard(s1);
 		
-		for (int i = 0; i < 2; i++) {
-			deckShop.addCard(b2);
-			deckShop.addCard(s7);
-			deckShop.addCard(s4);
-			deckShop.addCard(s2);
-		}
+		deckShop.addCard(h1);
 		
-		for (int i = 0; i < 3; i++) {
-			deckShop.addCard(b1);
-			deckShop.addCard(s8);
-			deckShop.addCard(s6);
-			deckShop.addCard(s3);
-		}
+		System.out.println(deckShop);
 		
-		deckShop.shufDeck();
-		shop.fillShop(deckShop);
-		
-		p1.addTrade(8);
-		shop.buyCard(1, p1);
 		p1.drawCard();
 		p1.drawCard();
 		p1.playCard(1);
+		p1.playCard(1);
+		System.out.println(p1.getHand());
 		p1.getBoard().allEffects(p1, p2, shop, deckShop);
+		p1.getBoard().allyEffect(p1, p2, shop, deckShop);
 		System.out.println(p1.getBoard());
-		System.out.println(p1.getGrave());
-	
+		System.out.println(p1.getHand());
+		Visuel.statut(p1, p2);
+		
 	
 	}
 }

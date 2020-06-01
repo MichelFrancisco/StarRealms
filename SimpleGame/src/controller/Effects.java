@@ -33,15 +33,19 @@ public class Effects {
 
 	// Cherche de quel effet il s'agit et effectue une action en conséquence
 	public void applyEffect(Player p,Player badGuy,Shop shop,Deck deckShop) {
-		if (target == "combat") p.addCombat(value);
-		else if (target == "trade") p.addTrade(value);
-		else if (target == "authority") p.addAuthority(value);
-		else if (target == "draw") {
+		
+		switch(target) {
+		
+		case "combat":  p.addCombat(value);break;
+		case"trade":  p.addTrade(value);break;
+		case "authority":  p.addAuthority(value);break;
+		case "draw":{
 			for (int i = 0; i < value; i++) {
 				p.drawCard();
 			}
+			break;
 		}
-		else if(target == "or" && e2 != null) {
+		case "or": {
 			Scanner lectureClavier = new Scanner(System.in);
 			int end = 0;
 			while(end==0) {
@@ -57,16 +61,21 @@ public class Effects {
 				default: System.out.println("Valeur choisie invalide");
 				}
 			}
+			break;
 		}
-		else if(target == "and" && e2 != null) {
+		case "and": {
 			e1.applyEffect(p, badGuy, shop, deckShop);
 			e2.applyEffect(p, badGuy, shop, deckShop);
+			break;
 		}
-		else if(target == "destroyBase") destroyBase(badGuy);
-		else if(target == "scrapTrade") scrapTrade(shop, deckShop);
-		else if(target == "scrapDeck") scrapDeck(p);
-		else if(target == "scrapHand") scrapHand(p, badGuy, shop, deckShop);
-		else if(target == "scrapGrave") scrapGrave(p);
+		case "destroyBase": destroyBase(badGuy);break;
+		case "scrapTrade":scrapTrade(shop, deckShop);break;
+		case "scrapHand":scrapHand(p, badGuy, shop, deckShop);break;
+		case "scrapDeck":scrapDeck(p);break;
+		case "scrapGrave":scrapGrave(p);break;
+		default: 
+		}
+		
 	}
 
 	

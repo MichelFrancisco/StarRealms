@@ -6,6 +6,9 @@ import view.Visuel;
 
 public class Game {
 	public void jvjClassic() {
+		
+		
+		
 		boolean rejouer = true;
 		while (rejouer) {
 			
