@@ -35,48 +35,19 @@ public class MainTest {
 		
 		Deck deckShop = new Deck();
 		Deck deckExplo = new Deck();
+		Deck missionDeck = new Deck();
+		missionDeck.addMission(missionDeck);
+		
 		deckExplo.fillExplo();
 		Shop shop = new Shop();
 		Player p1 = new Player();
 		Player p2 = new Player();
-		
-		p1.getDeck().addCard(s13);
-		p1.getDeck().addCard(s13);
-		p1.getDeck().addCard(s13);
-		p1.getDeck().addCard(s13); 
-		
 
-		deckShop.addCard(s9);
-		deckShop.addCard(b3);
-		deckShop.addCard(s5);
-		deckShop.addCard(s1);
+		p1.drawMission(missionDeck);
+		p1.drawMission(missionDeck);
+		p1.drawMission(missionDeck);
 		
-		for (int i = 0; i < 2; i++) {
-			deckShop.addCard(b2);
-			deckShop.addCard(s7);
-			deckShop.addCard(s4);
-			deckShop.addCard(s2);
-		}
-		
-		for (int i = 0; i < 3; i++) {
-			deckShop.addCard(b1);
-			deckShop.addCard(s8);
-			deckShop.addCard(s6);
-			deckShop.addCard(s3);
-		}
-		
-		deckShop.shufDeck();
-		shop.fillShop(deckShop);
-		
-		p1.addTrade(8);
-		shop.buyCard(1, p1);
-		p1.drawCard();
-		p1.drawCard();
-		p1.playCard(1);
-		p1.getBoard().allEffects(p1, p2, shop, deckShop);
-		System.out.println(p1.getBoard());
-		System.out.println(p1.getGrave());
-	
+		System.out.println(p1.getHand());
 	
 	}
 }

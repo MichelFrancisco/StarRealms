@@ -2,6 +2,8 @@ package controller;
 
 import java.util.ArrayList;
 
+import controller.united.Mission;
+
 public class Player {
 	private int authority;
 	private int combat;
@@ -115,6 +117,11 @@ public class Player {
 	//Fait Piocher une carte du deck
 	public void drawCard() {
 		hand.addCard(deck.remove(0));
+	}
+	
+	public void drawMission(Deck missionDeck) {
+		missionDeck.shufDeck();
+		hand.addCard(missionDeck.remove(0));
 	}
 
 	//Permet d'acheter un exploreur de la pile exploreur
