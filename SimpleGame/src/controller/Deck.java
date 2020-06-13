@@ -30,7 +30,13 @@ public class Deck {
 		Ships s1 = new Ships(6,"Battle Blob","Blob", new Effects("combat", 8),null, new Effects("combat", 4), new Effects("draw",1));
 		Ships s2 = new Ships(3,"Ram","Blob", new Effects("combat", 5),null, new Effects("trade", 3),new Effects("combat",2));
 		Ships s3 = new Ships(2,"Trade Pod","Blob", new Effects("trade", 3), null,null,new Effects("combat",2));
+		Ships s10 = new Ships(1,"Blob Fighter","Blob",new Effects("combat",3),null,null,new Effects("draw",1));
+		Ships s11 = new Ships(7,"Mothership","Blob",new Effects("combat",6),new Effects("draw",1),null,new Effects("draw",1));
+		Ships s20 = new Ships(7,"Blob Destroyer","Blob",new Effects("combat",6),new Effects("or",new Effects("or",new Effects("destroyBase",1),new Effects("scrapTrade",1)),new Effects("and",new Effects("destroyBase",1),new Effects("scrapTrade",1))),null);
+		
 		Base b1 = new Base(3,"Blob Wheel","Blob",5, new Effects("combat", 1), new Effects("trade", 3) ,true);
+		Base b7 = new Base(5,"The Hive","Blob",5, new Effects("combat", 3),null,null,new Effects("draw",1) ,false);
+
 		
 		Ships s4 = new Ships(2,"Corvette","Star Empire", new Effects("combat", 1), null,new Effects("draw", 1),new Effects("combat",2));
 		Ships s5 = new Ships(7,"Dreadnaught","Star Empire", new Effects("combat", 7), new Effects("draw", 1), new Effects("combat", 5));
@@ -41,15 +47,37 @@ public class Deck {
 		Ships s8 = new Ships(1,"Federation Shuttle","Trade Federation",new Effects("trade",2),null,null,new Effects("authority",4));
 		Ships s7 = new Ships(3,"Embassy Yacht","Trade Federation",new Effects("trade",2),new Effects("authority",3));
 		Ships s6 = new Ships(2,"Cutter","Trade Federation", new Effects("trade",2),new Effects("authority",4),null, new Effects("combat",4));
+		Ships s12 = new Ships(5,"Trade Escort","Trade Federation",new Effects("authority",4),new Effects("combat",4),null,new Effects("draw",1));
+		Ships s13 = new Ships(8,"Command Ship","Trade Federation",new Effects("authority",4),new Effects("and",new Effects("combat",5),new Effects("draw",2)),null,new Effects("destroyBase",1));
 		Base b4 = new Base(4,"Barter World", "Trade Federation",4, new Effects("or", new Effects("authority",2), new Effects("trade",2)), null, null, new Effects("combat",5),false);
 		Base b5 = new Base(5, "Defense Center", "Trade Federation", 5, new Effects("or", new Effects("authority",3), new Effects("combat",2)), null, new Effects("combat",2), null, true);
 		Base b6 = new Base(3, "Trading Post", "Trade Federation", 4, new Effects("or", new Effects("authority",1), new Effects("trade",1)), null, null, new Effects("combat",2), true);
+		Base b11 = new Base(6,"Port of Call","Trade Federation",6,new Effects("trade",3),null,new Effects("and",new Effects("draw",1),new Effects("destroyBase",1)),null,true);
+		
+		Ships s14 = new Ships(1,"Trade Bot","Machine Cult",new Effects("trade",1),new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",1)),null,new Effects("combat",2));
+		Ships s15 = new Ships(3,"Supply Bot","Machine Cult",new Effects("trade",2),new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",1)),null,new Effects("combat",2));
+		Ships s16 = new Ships(4,"Patrol Mech","Machine Cult",new Effects("or",new Effects("trade",3),new Effects("combat",5)),null,null,new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",2)));
+		Ships s17 = new Ships(6,"Missile Mech","Machine Cult",new Effects("combat",6),new Effects("destroyBase",1),null,new Effects("draw",1));
+		Ships s18 = new Ships(2,"Missile Bot","Machine Cult",new Effects("combat",2),new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",1)),null,new Effects("combat",2));
+		Ships s19 = new Ships(5,"Battle Mech","Machine Cult",new Effects("combat",4),new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",1)),null,new Effects("draw",1));
+		Base b8 = new Base(3,"Battle Station","Machine Cult",5,null,null,new Effects("combat",5),null,true);
+		Base b9 = new Base(7,"Machine Base","Machine Cult",6,new Effects("draw",1),new Effects("scrapHand",1),null,null,true);
+		Base b10 = new Base(6,"Junkyard","Machine Cult",5,new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",2)),null,null,null,true);
 		
 		deckShop.addCard(s9);
 		deckShop.addCard(b3);
 		deckShop.addCard(s5);
 		deckShop.addCard(s1);
 		deckShop.addCard(b5);
+		deckShop.addCard(s11);
+		deckShop.addCard(b7);
+		deckShop.addCard(s17);
+		deckShop.addCard(s19);
+		deckShop.addCard(b9);
+		deckShop.addCard(b10);
+		deckShop.addCard(s12);
+		deckShop.addCard(s13);
+		deckShop.addCard(b11);	
 		
 		for (int i = 0; i < 2; i++) {
 			deckShop.addCard(b2);
@@ -58,6 +86,9 @@ public class Deck {
 			deckShop.addCard(s2);
 			deckShop.addCard(b4);
 			deckShop.addCard(b6);
+			deckShop.addCard(s20);
+			deckShop.addCard(s16);
+			deckShop.addCard(b8);
 		}
 		
 		for (int i = 0; i < 3; i++) {
@@ -65,6 +96,10 @@ public class Deck {
 			deckShop.addCard(s8);
 			deckShop.addCard(s6);
 			deckShop.addCard(s3);
+			deckShop.addCard(s10);
+			deckShop.addCard(s14);
+			deckShop.addCard(s15);
+			deckShop.addCard(s18);
 		}
 	}
 	

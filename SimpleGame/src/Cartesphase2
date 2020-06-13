@@ -1,29 +1,12 @@
 Phase 2 carte crée pas implémentées
 
 	//blob
-	Ships s10 = new Ships(1,"Blob Fighter","Blob",new Effects("combat",3),null,null,new Effects("draw",1));
-	Ships s11 = new Ships(7,"Mothership","Blob",new Effects("combat",6),new Effects("draw",1),null,new Effects("draw",1));
-	Ships s20 = new Ships(7,"Blob Destroyer","Blob",new Effects("combat",6),new Effects("or",new Effects("or",new Effects("destroyBase",1),new Effects("scrapTrade",1)),new Effects("and",new Effects("destroyBase",1),new Effects("scrapTrade",1))),null);
-	Ships s20 = new Ships(7,"Blob Destroyer","Blob",new Effects("combat",6),new Effects("or",new Effects("or",new Effects("destroyBase",1),new Effects("scrapTrade",1)),new Effects("and",new Effects("destroyBase",1),new Effects("scrapTrade",1))),null);
 	
-	Base b4 = new Base(5,"The Hive","Blob",5, new Effects("combat", 3),null,null,new Effects("draw",1) ,false);
 	
 	//Machine cult
-	Ships s14 = new Ships(1,"Trade Bot","Machine Cult",new Effects("trade",1),new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",1)),null,new Effects("combat",2));
-	Ships s15 = new Ships(3,"Supply Bot","Machine Cult",new Effects("trade",2),new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",1)),null,new Effects("combat",2));
-	Ships s16 = new Ships(4,"Patrol Mech","Machine Cult",new Effects("or",new Effects("trade",3),new Effects("combat",5)),null,null,new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",2)));
-	Ships s17 = new Ships(6,"Missile Mech","Machine Cult",new Effects("combat",6),new Effects("destroyBase",1),null,new Effects("draw",1));
-	Ships s18 = new Ships(2,"Missile Bot","Machine Cult",new Effects("combat",2),new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",1)),null,new Effects("combat",2));
-	Ships s19 = new Ships(5,"Battle Mech","Machine Cult",new Effects("combat",4),new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",1)),null,new Effects("draw",1));
 	
-	new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",2))
-	
-	Base b5 = new Base(3,"Battle Station","Machine Cult",5,null,null,new Effects("combat",5),null,true);
-	Base b7 = new Base(7,"Machine Base","Machine Cult",6,new Effects("draw",1),new Effects("scrapHand",1),null,null,true);
-	Base b8 = new Base(6,"Junkyard","Machine Cult",5,new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",2)),null,null,null,true);
+
 
 	//Trade Federation
-	Ships s12 = new Ships(5,"Trade Escort","Trade Federation",new Effects("authority",4),new Effects("combat",4),null,new Effects("draw",1));
-	Ships s13 = new Ships(8,"Command Ship","Trade Federation",new Effects("authority",4),new Effects("and",new Effects("combat",5),new Effects("draw",2)),null,new Effects("destroyBase",1));
 	
-	Base b6 = new Base(6,"Port of Call","Trade Federation",6,new Effects("trade",3),null,new Effects("and",new Effects("draw",1),new Effects("destroyBase",1)),null,true);
+	

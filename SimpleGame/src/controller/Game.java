@@ -6,42 +6,42 @@ import java.util.Scanner;
 import view.Visuel;
 
 public class Game {
-	
-	
-	
+
+
+
 	public void jvjClassic() {
-		
-		
-		
+
+
+
 		boolean rejouer = true;
 		while (rejouer) {
-			
-		// Initialisation des éléments de jeu
-		
+
+		// Initialisation des ï¿½lï¿½ments de jeu
+
 		Deck deckShop = new Deck();
 		Deck deckExplo = new Deck();
 		deckExplo.fillExplo();
 		Shop shop = new Shop();
 		Player p1 = new Player();
 		Player p2 = new Player();
-		
+
 		p1.initDeck();
 		p2.initDeck();
-		
+
 		// Initialisation des cartes de la premiere extension dans le deckShop
-		deckShop.deckExt1(deckShop);	
+		deckShop.deckExt1(deckShop);
 		deckShop.shufDeck();
 		shop.fillShop(deckShop);
-		
-		// Déroulement de la partie
-		
+
+		// Dï¿½roulement de la partie
+
 		boolean finPose = false;
 		Scanner lectureClavier = new Scanner(System.in);
-		
+
 		int tour = 0;
 		Player player;
 		Player badGuy;
-		
+
 		while (p1.isAlive() && p2.isAlive()) {
 			if(tour%2 == 0) {
 				player = p1;
@@ -53,7 +53,7 @@ public class Game {
 				badGuy = p1;
 				System.out.println("Tour de p2");
 			}
-			
+
 			if(tour == 0) {
 				for (int i = 0; i < 3; i++) {
 					player.drawCard();
@@ -67,9 +67,9 @@ public class Game {
 					player.drawCard();
 				}
 			}
-			
-		// Déroulement d'un tour
-		
+
+		// Dï¿½roulement d'un tour
+
 		boolean finTour = false;
 		while (finTour == false) {
 			while(finPose == false) {
@@ -82,38 +82,38 @@ public class Game {
 							int nb = lectureClavier.nextInt();
 							if (nb > 0 && nb <= player.getHand().size()) {
 								player.playCard(nb);
-								
+
 								}
 							else {
-								System.out.println("Le nombre entré est invalide");
+								System.out.println("Le nombre entrï¿½ est invalide");
 							}
 							break;
-							
+
 					case 2: finPose = true;
 							player.getBoard().allEffects(player,badGuy,shop,deckShop, false);
 							player.getBoard().allyEffect(player,badGuy,shop,deckShop, false);
 							break;
-							
-					case 3: 
+
+					case 3:
 							int len = player.getHand().size();
 							for (int i = 0; i != len; i++) {
 								player.playCard(1);
-							} 
+							}
 							finPose = true;
 							player.getBoard().allEffects(player,badGuy,shop,deckShop, false);
 							player.getBoard().allyEffect(player,badGuy,shop,deckShop, false);
 							break;
-					
+
 					default: System.out.println("Entrez un nombre valide");
 				}
 			}
-		
-		
+
+
 		Visuel.menu();
-		
+
 	    int nombre = lectureClavier.nextInt();
-		
-		switch(nombre)  {		
+
+		switch(nombre)  {
 		case 1: System.out.println(shop);
 				Visuel.Explorer();
 				System.out.println("Quelle carte voulez-vous acheter ?");
@@ -129,25 +129,25 @@ public class Game {
 					deckExplo.fillExplo();
 					}
 				else {
-					System.out.println("Le nombre entré est invalide");
+					System.out.println("Le nombre entrï¿½ est invalide");
 				}
 				break;
-				
+
 		case 2: System.out.println(player.getBoard());
-				System.out.println("Quelle carte voulez-vous détruire ?");
+				System.out.println("Quelle carte voulez-vous dï¿½truire ?");
 				int nb3 = lectureClavier.nextInt();
 				if (nb3 > 0 && nb3 <= player.getBoard().getLength()) {
 					player.getBoard().scrap(nb3,player,badGuy,shop,deckShop, false);
 				}
 				else {
-					System.out.println("Le nombre entré est invalide");
+					System.out.println("Le nombre entrï¿½ est invalide");
 				}
 				break;
-				
+
 		case 3: System.out.println(player.getBoard());
 				break;
-				
-		case 4: 
+
+		case 4:
 				if (badGuy.getBoard().getBases().size() != 0) {
 					System.out.println("Que voulez vous attaquer ?");
 					if (badGuy.getOutpost().size() != 0) {
@@ -165,7 +165,7 @@ public class Game {
 					System.out.println("[L'adversaire], " + badGuy.getBoard().getBases());
 					int nb4 = lectureClavier.nextInt();
 					if (nb4 == 1) {
-						System.out.println("Vous infligez " + player.getCombat() + " points de dégats à l'adversaire");
+						System.out.println("Vous infligez " + player.getCombat() + " points de dï¿½gats ï¿½ l'adversaire");
 						badGuy.addAuthority(player.getCombat()*-1);
 						player.addCombat(player.getCombat()*-1);
 					}
@@ -178,29 +178,29 @@ public class Game {
 					}
 				}
 				else {
-				System.out.println("Vous infligez " + player.getCombat() + " points de dégats à l'adversaire");
+				System.out.println("Vous infligez " + player.getCombat() + " points de dï¿½gats ï¿½ l'adversaire");
 				badGuy.addAuthority(player.getCombat()*-1);
 				player.addCombat(player.getCombat()*-1);
 				}
-				break;	
-			
+				break;
+
 		case 5: Visuel.statut(player,badGuy);
-				break;		
-				
+				break;
+
 		case 6: player.resetPlayer();
 				finTour = true;
 				finPose = false;
 				tour += 1;
 				break;
-				
+
 		default:System.out.println("Entrez un chiffre entre 1 et 6");
 		}
 	   }
 	  }
 		if (p1.isAlive()) System.out.println("Le joueur 1 est victorieux !");
-		
+
 		else System.out.println("Le joueur 2 est victorieux !");
-		
+
 		boolean reponse = false;
 		while (reponse == false) {
 		System.out.println("Voulez vous rejouer ?");
@@ -211,12 +211,12 @@ public class Game {
 			case 1: System.out.println("C'est reparti mon kiki !");
 					reponse = true;
 					break;
-				
+
 			case 2: System.out.println("Ok pas de soucis ! Au revoir mon pote !");
 					rejouer = false;
 					reponse = true;
 					break;
-				
+
 			default: System.out.println("C'est si dur de choisir entre 1 et 2 ?");
 		}
 		}
@@ -226,33 +226,33 @@ public class Game {
 	public void jvIAClassic() {
 		boolean rejouer = true;
 		while (rejouer) {
-			
-		// Initialisation des éléments de jeu
-		
+
+		// Initialisation des ï¿½lï¿½ments de jeu
+
 		Deck deckShop = new Deck();
 		Deck deckExplo = new Deck();
 		deckExplo.fillExplo();
 		Shop shop = new Shop();
 		Player p1 = new Player();
 		Player IA = new Player();
-		
+
 		p1.initDeck();
 		IA.initDeck();
-		
+
 		// Initialisation des cartes de la premiere extension dans le deckShop
-		deckShop.deckExt1(deckShop);	
+		deckShop.deckExt1(deckShop);
 		deckShop.shufDeck();
 		shop.fillShop(deckShop);
-		
-		// Déroulement de la partie
-		
+
+		// Dï¿½roulement de la partie
+
 		boolean finPose = false;
 		Scanner lectureClavier = new Scanner(System.in);
-		
+
 		int tour = 0;
 		Player player;
 		Player badGuy;
-		
+
 		while (p1.isAlive() && IA.isAlive()) {
 			if(tour%2 == 0) {
 				player = p1;
@@ -264,7 +264,7 @@ public class Game {
 				badGuy = p1;
 				System.out.println("Tour de p2");
 			}
-			
+
 			if(tour == 0) {
 				for (int i = 0; i < 3; i++) {
 					player.drawCard();
@@ -278,63 +278,63 @@ public class Game {
 					player.drawCard();
 				}
 			}
-			
-		// Déroulement d'un tour
-		
-		
+
+		// Dï¿½roulement d'un tour
+
+
 		boolean finTour = false;
-		
+
 		if (player == IA) {
-			
-			// On fait jouer toutes ses cartes à l'IA
-			
+
+			// On fait jouer toutes ses cartes ï¿½ l'IA
+
 			int len = player.getHand().size();
 			for (int i = 0; i != len; i++) {
 				player.playCard(1);
-			} 
+			}
 			finPose = true;
 			player.getBoard().allEffects(player,badGuy,shop,deckShop, true);
 			player.getBoard().allyEffect(player,badGuy,shop,deckShop, true);
-			
-			// On fait acheter ce qu'il peut à l'IA
-			
-			
+
+			// On fait acheter ce qu'il peut ï¿½ l'IA
+
+
 			for (int i = 1; i < shop.size(); i++) {
 				if (IA.getTrade() != 0) {
 					if (IA.getTrade() >= shop.get(i).getCost()) {
-						System.out.println("L'IA achète une carte:");
+						System.out.println("L'IA achï¿½te une carte:");
 						System.out.println(shop.get(i));
 						shop.buyCard(i, IA);
 					}
 				}
 			}
-			
+
 			// On fait attaquer l'IA
-			
+
 			if (IA.getCombat() != 0) {
 				if (p1.getOutpost().size() != 0) {
 					for (Base base : p1.getOutpost()) {
 						if(IA.getCombat() >= base.getDef()) {
-							System.out.printf("L'IA détruit ",base.getName());
+							System.out.printf("L'IA dï¿½truit ",base.getName());
 							IA.atckBase(base, IA);
 						}
 					}
 				}
 
 				else {
-					System.out.println("L'IA vous attaque et vous inflige " + IA.getCombat() + " points de dégats");
+					System.out.println("L'IA vous attaque et vous inflige " + IA.getCombat() + " points de dï¿½gats");
 					p1.addAuthority(IA.getCombat()*-1);
 					IA.addCombat(IA.getCombat()*-1);
 				}
 			}
-			
+
 			// On termine le tour de l'IA
 			IA.resetPlayer();
 			finPose = false;
 			tour += 1;
 			continue;
 		}
-		
+
 		int countBlob = 0;
 		while (finTour == false) {
 			while(finPose == false) {
@@ -352,35 +352,35 @@ public class Game {
 								player.playCard(nb);
 								}
 							else {
-								System.out.println("Le nombre entré est invalide");
+								System.out.println("Le nombre entrï¿½ est invalide");
 							}
 							break;
-							
+
 					case 2: finPose = true;
 							player.getBoard().allEffects(player,badGuy,shop,deckShop, false);
 							player.getBoard().allyEffect(player,badGuy,shop,deckShop, false);
 							break;
-							
-					case 3: 
+
+					case 3:
 							int len = player.getHand().size();
 							for (int i = 0; i != len; i++) {
 								player.playCard(1);
-							} 
+							}
 							finPose = true;
 							player.getBoard().allEffects(player,badGuy,shop,deckShop, false);
 							player.getBoard().allyEffect(player,badGuy,shop,deckShop, false);
 							break;
-					
+
 					default: System.out.println("Entrez un nombre valide");
 				}
 			}
-		
-		
+
+
 		Visuel.menu();
-		
+
 	    int nombre = lectureClavier.nextInt();
-		
-		switch(nombre)  {		
+
+		switch(nombre)  {
 		case 1: System.out.println(shop);
 				Visuel.Explorer();
 				System.out.println("Quelle carte voulez-vous acheter ?");
@@ -396,25 +396,25 @@ public class Game {
 					deckExplo.fillExplo();
 					}
 				else {
-					System.out.println("Le nombre entré est invalide");
+					System.out.println("Le nombre entrï¿½ est invalide");
 				}
 				break;
-				
+
 		case 2: System.out.println(player.getBoard());
-				System.out.println("Quelle carte voulez-vous détruire ?");
+				System.out.println("Quelle carte voulez-vous dï¿½truire ?");
 				int nb3 = lectureClavier.nextInt();
 				if (nb3 > 0 && nb3 <= player.getBoard().getLength()) {
 					player.getBoard().scrap(nb3,player,badGuy,shop,deckShop, false);
 				}
 				else {
-					System.out.println("Le nombre entré est invalide");
+					System.out.println("Le nombre entrï¿½ est invalide");
 				}
 				break;
-				
+
 		case 3: System.out.println(player.getBoard());
 				break;
-				
-		case 4: 
+
+		case 4:
 				if (badGuy.getBoard().getBases().size() != 0) {
 					System.out.println("Que voulez vous attaquer ?");
 					if (badGuy.getOutpost().size() != 0) {
@@ -432,7 +432,7 @@ public class Game {
 					System.out.println("[L'adversaire], " + badGuy.getBoard().getBases());
 					int nb4 = lectureClavier.nextInt();
 					if (nb4 == 1) {
-						System.out.println("Vous infligez " + player.getCombat() + " points de dégats à l'adversaire");
+						System.out.println("Vous infligez " + player.getCombat() + " points de dï¿½gats ï¿½ l'adversaire");
 						badGuy.addAuthority(player.getCombat()*-1);
 						player.addCombat(player.getCombat()*-1);
 					}
@@ -445,29 +445,29 @@ public class Game {
 					}
 				}
 				else {
-				System.out.println("Vous infligez " + player.getCombat() + " points de dégats à l'adversaire");
+				System.out.println("Vous infligez " + player.getCombat() + " points de dï¿½gats ï¿½ l'adversaire");
 				badGuy.addAuthority(player.getCombat()*-1);
 				player.addCombat(player.getCombat()*-1);
 				}
-				break;	
-			
+				break;
+
 		case 5: Visuel.statut(player,badGuy);
-				break;		
-				
+				break;
+
 		case 6: player.resetPlayer();
 				finTour = true;
 				finPose = false;
 				tour += 1;
 				break;
-				
+
 		default:System.out.println("Entrez un chiffre entre 1 et 6");
 		}
 	   }
 	  }
 		if (p1.isAlive()) System.out.println("Bravo !");
-		
-		else System.out.println("L'IA a gagné");
-		
+
+		else System.out.println("L'IA a gagnï¿½");
+
 		boolean reponse = false;
 		while (reponse == false) {
 		System.out.println("Voulez vous rejouer ?");
@@ -478,12 +478,12 @@ public class Game {
 			case 1: System.out.println("C'est reparti mon kiki !");
 					reponse = true;
 					break;
-				
+
 			case 2: System.out.println("Ok pas de soucis ! Au revoir mon pote !");
 					rejouer = false;
 					reponse = true;
 					break;
-				
+
 			default: System.out.println("C'est si dur de choisir entre 1 et 2 ?");
 		}
 		}
@@ -491,12 +491,12 @@ public class Game {
 	}
 
 	public void jvjDeathMatch() {
-		
+
 		boolean rejouer = true;
 		while (rejouer) {
-			
-		// Initialisation des éléments de jeu
-		
+
+		// Initialisation des ï¿½lï¿½ments de jeu
+
 		Deck deckShop = new Deck();
 		Deck deckExplo = new Deck();
 		deckExplo.fillExplo();
@@ -511,25 +511,25 @@ public class Game {
 		for (int i = 0; i < nbJoueurs; i++) {
 			listJoueurs.get(i).initDeck();
 		}
-		
+
 		// Initialisation des cartes de la premiere extension dans le deckShop
-		deckShop.deckExt1(deckShop);	
+		deckShop.deckExt1(deckShop);
 		deckShop.shufDeck();
 		shop.fillShop(deckShop);
-		
-		// Déroulement de la partie
-		
+
+		// Dï¿½roulement de la partie
+
 		boolean finPose = false;
-		
+
 		int tour = 0;
 		Player player;
 		Player badGuy = null;
 		boolean allAlive = true;
-		
+
 		while (allAlive == true) {
 			player = listJoueurs.get(tour);
 			System.out.printf("Tour du joueur %d \n", tour + 1);
-			
+
 			if(tour == 0) {
 				for (int i = 0; i < 3; i++) {
 					player.drawCard();
@@ -543,7 +543,7 @@ public class Game {
 					player.drawCard();
 				}
 			}
-			
+
 			else {
 				for (int i = 0; i < 5; i++) {
 					if (player.getDeck().isEmpty()) {
@@ -552,9 +552,9 @@ public class Game {
 					player.drawCard();
 				}
 			}
-			
-		// Déroulement d'un tour
-		
+
+		// Dï¿½roulement d'un tour
+
 		boolean finTour = false;
 		while (finTour == false) {
 			while(finPose == false) {
@@ -567,13 +567,13 @@ public class Game {
 							int nb = lectureClavier.nextInt();
 							if (nb > 0 && nb <= player.getHand().size()) {
 								player.playCard(nb);
-								
+
 								}
 							else {
-								System.out.println("Le nombre entré est invalide");
+								System.out.println("Le nombre entrï¿½ est invalide");
 							}
 							break;
-							
+
 					case 2: finPose = true;
 						boolean truc = false;
 						while (truc == false) {
@@ -585,19 +585,19 @@ public class Game {
 							int cible = lectureClavier.nextInt();
 							cible --;
 							if (cible == tour) {
-								System.out.println("Tu ne peux pas te cibler toi même !");
+								System.out.println("Tu ne peux pas te cibler toi mï¿½me !");
 								continue;
 							}
 							else {
-								badGuy = listJoueurs.get(cible); 
+								badGuy = listJoueurs.get(cible);
 								truc = true;
 							}
 						}
 							player.getBoard().allEffects(player,badGuy,shop,deckShop, false);
 							player.getBoard().allyEffect(player,badGuy,shop,deckShop, false);
 							break;
-							
-					case 3: 
+
+					case 3:
 						truc = false;
 						while (truc == false) {
 							System.out.println("Quel joueur ciblez vous avec vos effets  ?");
@@ -608,33 +608,33 @@ public class Game {
 							int cible = lectureClavier.nextInt();
 							cible --;
 							if (cible == tour) {
-								System.out.println("Tu ne peux pas te cibler toi même !");
+								System.out.println("Tu ne peux pas te cibler toi mï¿½me !");
 								continue;
 							}
 							else {
-								badGuy = listJoueurs.get(cible); 
+								badGuy = listJoueurs.get(cible);
 								truc = true;
 							}
 						}
 							int len = player.getHand().size();
 							for (int i = 0; i != len; i++) {
 								player.playCard(1);
-							} 
+							}
 							finPose = true;
 							player.getBoard().allEffects(player,badGuy,shop,deckShop, false);
 							player.getBoard().allyEffect(player,badGuy,shop,deckShop, false);
 							break;
-					
+
 					default: System.out.println("Entrez un nombre valide");
 				}
 			}
-		
-		
+
+
 		Visuel.menu();
-		
+
 	    int nombre = lectureClavier.nextInt();
-		
-		switch(nombre)  {		
+
+		switch(nombre)  {
 		case 1: System.out.println(shop);
 				Visuel.Explorer();
 				System.out.println("Quelle carte voulez-vous acheter ?");
@@ -650,24 +650,24 @@ public class Game {
 					deckExplo.fillExplo();
 					}
 				else {
-					System.out.println("Le nombre entré est invalide");
+					System.out.println("Le nombre entrï¿½ est invalide");
 				}
 				break;
-				
+
 		case 2: System.out.println(player.getBoard());
-				System.out.println("Quelle carte voulez-vous détruire ?");
+				System.out.println("Quelle carte voulez-vous dï¿½truire ?");
 				int nb3 = lectureClavier.nextInt();
 				if (nb3 > 0 && nb3 <= player.getBoard().getLength()) {
 					player.getBoard().scrap(nb3,player,badGuy,shop,deckShop, false);
 				}
 				else {
-					System.out.println("Le nombre entré est invalide");
+					System.out.println("Le nombre entrï¿½ est invalide");
 				}
 				break;
-				
+
 		case 3: System.out.println(player.getBoard());
 				break;
-				
+
 		case 4:
 			boolean truc = false;
 			while (truc == false) {
@@ -679,11 +679,11 @@ public class Game {
 				int cible = lectureClavier.nextInt();
 				cible --;
 				if (cible == tour) {
-					System.out.println("Tu ne peux pas te cibler toi même !");
+					System.out.println("Tu ne peux pas te cibler toi mï¿½me !");
 					continue;
 				}
 				else {
-					badGuy = listJoueurs.get(cible); 
+					badGuy = listJoueurs.get(cible);
 					truc = true;
 				}
 			}
@@ -704,7 +704,7 @@ public class Game {
 					System.out.println("[L'adversaire], " + badGuy.getBoard().getBases());
 					int nb4 = lectureClavier.nextInt();
 					if (nb4 == 1) {
-						System.out.println("Vous infligez " + player.getCombat() + " points de dégats à l'adversaire");
+						System.out.println("Vous infligez " + player.getCombat() + " points de dï¿½gats ï¿½ l'adversaire");
 						badGuy.addAuthority(player.getCombat()*-1);
 						player.addCombat(player.getCombat()*-1);
 					}
@@ -717,25 +717,25 @@ public class Game {
 					}
 				}
 				else {
-				System.out.println("Vous infligez " + player.getCombat() + " points de dégats à l'adversaire");
+				System.out.println("Vous infligez " + player.getCombat() + " points de dï¿½gats ï¿½ l'adversaire");
 				badGuy.addAuthority(player.getCombat()*-1);
 				player.addCombat(player.getCombat()*-1);
 				}
-				break;	
-			
+				break;
+
 		case 5: Visuel.statut(player);
 				for (Player Ennemy : listJoueurs) {
 					System.out.printf("Joueur %d \n", listJoueurs.indexOf(Ennemy)+1);
 					Visuel.statut(Ennemy);
 				}
-				break;		
-				
+				break;
+
 		case 6: player.resetPlayer();
 				finTour = true;
 				finPose = false;
 				tour += 1;
 				break;
-				
+
 		default:System.out.println("Entrez un chiffre entre 1 et 6");
 		}
 	   }
@@ -750,12 +750,12 @@ public class Game {
 			for (Player player2 : listJoueurs) {
 				if (player2.isAlive()) {
 					String gagnant = "Joueur"+listJoueurs.indexOf(player2);
-					System.out.printf("Victoire, le joueur %s a gagné, Bravo !!! \n", gagnant);
+					System.out.printf("Victoire, le joueur %s a gagnï¿½, Bravo !!! \n", gagnant);
 				}
 			}
 		}
 	  }
-		
+
 		boolean reponse = false;
 		while (reponse == false) {
 		System.out.println("Voulez vous rejouer ?");
@@ -766,12 +766,12 @@ public class Game {
 			case 1: System.out.println("C'est reparti mon kiki !");
 					reponse = true;
 					break;
-				
+
 			case 2: System.out.println("Ok pas de soucis ! Au revoir mon pote !");
 					rejouer = false;
 					reponse = true;
 					break;
-				
+
 			default: System.out.println("C'est si dur de choisir entre 1 et 2 ?");
 		}
 		}
@@ -779,5 +779,3 @@ public class Game {
 	}
 
 }
-
-
