@@ -5,10 +5,8 @@ import java.util.Scanner;
 import view.Visuel;
 
 public class Game {
-	public void jvjClassic() {
-		
-		
-		
+	
+	public void jvjClassic() {	
 		boolean rejouer = true;
 		while (rejouer) {
 			
