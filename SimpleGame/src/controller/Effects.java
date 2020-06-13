@@ -32,7 +32,7 @@ public class Effects {
 	}
 
 	// Cherche de quel effet il s'agit et effectue une action en conséquence
-	public void applyEffect(Player p,Player badGuy,Shop shop,Deck deckShop) {
+	public void applyEffect(Player p,Player badGuy,Shop shop,Deck deckShop, boolean ia) {
 		
 		switch(target) {
 		
@@ -50,12 +50,13 @@ public class Effects {
 			int end = 0;
 			while(end==0) {
 				Visuel.ChoixEffet(e1, e2);
+				if (ia) {e1.applyEffect(p, badGuy, shop, deckShop, false);}
 				int rep = lectureClavier.nextInt();
 				switch(rep) {
-				case 1: e1.applyEffect(p, badGuy, shop, deckShop);
+				case 1: e1.applyEffect(p, badGuy, shop, deckShop, false);
 						end = 1;
 						break;
-				case 2: e2.applyEffect(p, badGuy, shop, deckShop);
+				case 2: e2.applyEffect(p, badGuy, shop, deckShop, false);
 						end = 1;
 						break;
 				default: System.out.println("Valeur choisie invalide");
@@ -64,11 +65,11 @@ public class Effects {
 			break;
 		}
 		case "and": {
-			e1.applyEffect(p, badGuy, shop, deckShop);
-			e2.applyEffect(p, badGuy, shop, deckShop);
+			e1.applyEffect(p, badGuy, shop, deckShop, false);
+			e2.applyEffect(p, badGuy, shop, deckShop, false);
 			break;
 		}
-		case "destroyBase": destroyBase(badGuy);break;
+		case "destroyBase": destroyBase(badGuy,ia);break;
 		case "scrapTrade":scrapTrade(shop, deckShop);break;
 		case "scrapHand":scrapHand(p, badGuy, shop, deckShop);break;
 		case "scrapDeck":scrapDeck(p);break;
@@ -80,7 +81,13 @@ public class Effects {
 
 	
 	
-	public void destroyBase(Player badGuy) {
+	public void destroyBase(Player badGuy, boolean ia) {
+		if (ia) {
+			if(badGuy.getBoard().getBases().size()!=0) {
+				badGuy.getBoard().remove(badGuy.getBoard().get(badGuy.getBoard().getLength()));
+				System.out.println("L'IA vous détruit une base");
+			}
+		}
 		System.out.println("Voulez vous detruire une base adverse ? [1] Oui [2] Non");
 		int end = 0;
 		Scanner lectureClavier = new Scanner(System.in);
@@ -91,7 +98,7 @@ public class Effects {
 						System.out.println("L'adversaire ne possede pas de base");
 					}
 					else {
-						System.out.printf("Quel base voulez vous detruire (numeroter de 1 a %d)\n",badGuy.getBoard().getBases().size());
+						System.out.printf("Quelle base voulez vous detruire (numeroter de 1 a %d)\n",badGuy.getBoard().getBases().size());
 						System.out.println(badGuy.getBoard());
 						int nb = lectureClavier.nextInt();
 						badGuy.getBoard().remove(badGuy.getBoard().get(nb-1));
@@ -143,7 +150,7 @@ public class Effects {
 			if (rep > 0 && rep <= p.getHand().size()) {
 				 Cards card = p.getHand().remove(rep-1);
 				 if (card.getScrapEffect() != null) {
-					 card.getScrapEffect().applyEffect(p, badGuy, shop, deckShop);
+					 card.getScrapEffect().applyEffect(p, badGuy, shop, deckShop, false);
 				 }
 				end = 1;
 			}

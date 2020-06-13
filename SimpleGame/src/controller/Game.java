@@ -64,7 +64,6 @@ public class Game {
 			
 		// Déroulement d'un tour
 		
-		int countBlob = 0;
 		boolean finTour = false;
 		while (finTour == false) {
 			while(finPose == false) {
@@ -76,9 +75,6 @@ public class Game {
 							System.out.println("Quelle carte voulez-vous poser ?");
 							int nb = lectureClavier.nextInt();
 							if (nb > 0 && nb <= player.getHand().size()) {
-								if (player.getHand().get(nb).getFaction() == "Blob") {
-									countBlob += 1;
-								}
 								player.playCard(nb);
 								
 								}
@@ -88,21 +84,18 @@ public class Game {
 							break;
 							
 					case 2: finPose = true;
-							player.getBoard().allEffects(player,badGuy,shop,deckShop);
-							player.getBoard().allyEffect(player,badGuy,shop,deckShop);
+							player.getBoard().allEffects(player,badGuy,shop,deckShop, false);
+							player.getBoard().allyEffect(player,badGuy,shop,deckShop, false);
 							break;
 							
 					case 3: 
 							int len = player.getHand().size();
 							for (int i = 0; i != len; i++) {
-								if (player.getHand().get(1).getFaction() == "Blob") {
-									countBlob += 1;
-								}
 								player.playCard(1);
 							} 
 							finPose = true;
-							player.getBoard().allEffects(player,badGuy,shop,deckShop);
-							player.getBoard().allyEffect(player,badGuy,shop,deckShop);
+							player.getBoard().allEffects(player,badGuy,shop,deckShop, false);
+							player.getBoard().allyEffect(player,badGuy,shop,deckShop, false);
 							break;
 					
 					default: System.out.println("Entrez un nombre valide");
@@ -138,7 +131,7 @@ public class Game {
 				System.out.println("Quelle carte voulez-vous détruire ?");
 				int nb3 = lectureClavier.nextInt();
 				if (nb3 > 0 && nb3 <= player.getBoard().getLength()) {
-					player.getBoard().scrap(nb3,player,badGuy,shop,deckShop);
+					player.getBoard().scrap(nb3,player,badGuy,shop,deckShop, false);
 				}
 				else {
 					System.out.println("Le nombre entré est invalide");
@@ -294,8 +287,8 @@ public class Game {
 				player.playCard(1);
 			} 
 			finPose = true;
-			player.getBoard().allEffects(player,badGuy,shop,deckShop);
-			player.getBoard().allyEffect(player,badGuy,shop,deckShop);
+			player.getBoard().allEffects(player,badGuy,shop,deckShop, true);
+			player.getBoard().allyEffect(player,badGuy,shop,deckShop, true);
 			
 			// On fait acheter ce qu'il peut à l'IA
 			
@@ -303,6 +296,8 @@ public class Game {
 			for (int i = 1; i < shop.size(); i++) {
 				if (IA.getTrade() != 0) {
 					if (IA.getTrade() >= shop.get(i).getCost()) {
+						System.out.println("L'IA achète une carte:");
+						System.out.println(shop.get(i));
 						shop.buyCard(i, IA);
 					}
 				}
@@ -356,21 +351,18 @@ public class Game {
 							break;
 							
 					case 2: finPose = true;
-							player.getBoard().allEffects(player,badGuy,shop,deckShop);
-							player.getBoard().allyEffect(player,badGuy,shop,deckShop);
+							player.getBoard().allEffects(player,badGuy,shop,deckShop, false);
+							player.getBoard().allyEffect(player,badGuy,shop,deckShop, false);
 							break;
 							
 					case 3: 
 							int len = player.getHand().size();
 							for (int i = 0; i != len; i++) {
-								if (player.getHand().get(1).getFaction() == "Blob") {
-									countBlob += 1;
-								}
 								player.playCard(1);
 							} 
 							finPose = true;
-							player.getBoard().allEffects(player,badGuy,shop,deckShop);
-							player.getBoard().allyEffect(player,badGuy,shop,deckShop);
+							player.getBoard().allEffects(player,badGuy,shop,deckShop, false);
+							player.getBoard().allyEffect(player,badGuy,shop,deckShop, false);
 							break;
 					
 					default: System.out.println("Entrez un nombre valide");
@@ -406,7 +398,7 @@ public class Game {
 				System.out.println("Quelle carte voulez-vous détruire ?");
 				int nb3 = lectureClavier.nextInt();
 				if (nb3 > 0 && nb3 <= player.getBoard().getLength()) {
-					player.getBoard().scrap(nb3,player,badGuy,shop,deckShop);
+					player.getBoard().scrap(nb3,player,badGuy,shop,deckShop, false);
 				}
 				else {
 					System.out.println("Le nombre entré est invalide");
