@@ -103,6 +103,65 @@ public class Deck {
 		}
 	}
 	
+	public void deckExtColony(Deck deckshop) {
+		Base b1 = new Base(4,"Bioformer","Blob",4,new Effects("combat",3),null,new Effects("trade",3),null,false);
+		Base b2 = new Base(2,"Stellar Reef","Blob",3,new Effects("trade",1),null,new Effects("trade",3),null,false);
+		Ships s1 = new Ships(3,"Cargo Pod","Blob",new Effects("trade",3),null,new Effects("combat",3),new Effects("combat",3));
+		Ships s2 = new Ships(2,"Predator","Blob",new Effects("combat",4),null,null,new Effects("draw",1));
+		Ships s3 = new Ships(3,"Ravager","Blob",new Effects("combat",6),new Effects("scrapTrade",1),null,null);
+		Ships s4 = new Ships(1,"Swarmer","Blob",new Effects("combat",3),new Effects("scrapTrade",1),null,new Effects("combat",2));
+		
+		Base b3 = new Base(6,"Frontier Station","Machine Cult",6,new Effects("or",new Effects("trade",2),new Effects("combat",3)),null,null,null,true);
+		Base b4 = new Base(4,"The Oracle","Machine Cult",5,new Effects("scrapHand",1),null,null,new Effects("combat",3),true);
+		Ships s5 = new Ships(1,"Battle Bot","Machine Cult",new Effects("combat",2),new Effects("scrapHand",1),null,new Effects("combat",2));
+		Ships s6 = new Ships(3,"Convoy Bot","Machine Cult",new Effects("combat",4),new Effects("scrapHand",1),null,new Effects("combat",2));
+		Ships s7 = new Ships(5,"Mech Cruiser","Machine Cult",new Effects("combat",6),new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",1)),null,new Effects("destroyBase",1));
+		Ships s8 = new Ships(4,"Minning Mech","Machine Cult",new Effects("trade",3),new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",1)),null,new Effects("combat",3));
+		Ships s9 = new Ships(2,"Repair Bot","Machine Cult",new Effects("trade",2),new Effects("scrapGrave",1),new Effects("combat",2),null);
+		Ships s10= new Ships(7,"The Wrecker","Machine Cult",new Effects("combat",6),new Effects("or",new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",1)),new Effects("and",new Effects("scrapHand",1),new Effects("scrapGrave",1))),null,new Effects("draw",1));
+		
+		
+		Ships s11 = new Ships(5,"Aging Battleship","Star Empire",new Effects("combat",5),null,new Effects("and",new Effects("combat",2),new Effects("draw",2)),new Effects("draw",1));
+		Ships s12 = new Ships(5,"Heavy Cruiser","Star Empire",new Effects("combat",4),new Effects("draw",1),null,new Effects("draw",1));
+		
+		Base b5 = new Base(7,"Loyal Colony","Trade Federation",6,new Effects("and",new Effects("trade",3),new Effects("combat",3)),new Effects("authority",3),null,null,false);
+		Base b6 = new Base(2,"Storage Silo","Trade Federation",3,new Effects("authority",2),null,null,new Effects("trade",2),true);
+		Ships s13 = new Ships(4,"Frontier Ferry","Trade Federation",new Effects("trade",3),new Effects("authority",4),new Effects("destroyBase",1),null);
+		Ships s14 = new Ships(3,"Patrol Cutter","Trade Federation",new Effects("and",new Effects("trade",2),new Effects("combat",3)),new Effects("authority",4),null,null);
+		Ships s15 = new Ships(6,"Peacekeeper","Trade Federation",new Effects("combat",6),new Effects("authority",6),null,new Effects("draw",1));
+		Ships s16 = new Ships(1,"Solar Skiff","Trade Federation",new Effects("trade",2),null,null,new Effects("draw",1));
+		Ships s17 = new Ships(2,"Trade Hauler","Trade Federation",new Effects("trade",3),null,null,new Effects("authority",3));
+		
+		deckshop.addCard(b3);
+		deckshop.addCard(s7);
+		deckshop.addCard(b4);
+		deckshop.addCard(s10);
+		deckshop.addCard(s11);
+		deckshop.addCard(s12);
+		deckshop.addCard(b5);
+		deckshop.addCard(s15);
+		
+		for (int i = 0; i < 2; i++) {
+			deckshop.addCard(b1);
+			deckshop.addCard(s3);
+			deckshop.addCard(s8);
+			deckshop.addCard(s13);
+			deckshop.addCard(b6);
+		}
+		for (int i = 0; i < 3; i++) {
+			deckshop.addCard(s1);
+			deckshop.addCard(s2);
+			deckshop.addCard(b2);
+			deckshop.addCard(s4);
+			deckshop.addCard(s5);
+			deckshop.addCard(s6);
+			deckshop.addCard(s9);
+			deckshop.addCard(s14);
+			deckshop.addCard(s16);
+			deckshop.addCard(s17);
+		}
+	}
+	
 	public void addMission(Deck missionDeck) {
 		Mission m1 = new Mission("Ally","Use Ally abilities from two different factions in the same turn", "Acquire a ship or base of cost four or less for free and put it on top of your deck");
 		Mission m2 = new Mission("Armada","Play seven or more ships in the same turn", "Draw a card. Acquire an explorer for free and put it in your hand");

@@ -33,9 +33,7 @@ public class Effects {
 
 	// Cherche de quel effet il s'agit et effectue une action en conséquence
 	public void applyEffect(Player p,Player badGuy,Shop shop,Deck deckShop, boolean ia) {
-		
 		switch(target) {
-		
 		case "combat":  p.addCombat(value);break;
 		case"trade":  p.addTrade(value);break;
 		case "authority":  p.addAuthority(value);break;

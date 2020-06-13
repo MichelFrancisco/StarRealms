@@ -43,11 +43,15 @@ public class MainTest {
 		Player p1 = new Player();
 		Player p2 = new Player();
 
-		p1.drawMission(missionDeck);
-		p1.drawMission(missionDeck);
-		p1.drawMission(missionDeck);
-
-		System.out.println(p1.getHand());
-
+		String test  ="zeubi";
+		String test2 = "zeubi/zob";
+		String[] zeub = test.split("/");
+		String zeub1 = zeub[1];
+		String zeub2 = zeub[0];
+		
+		System.out.println(test.contains(test2));
+		System.out.println(test2.contains(test));
+		System.out.println(zeub1);
+		System.out.println(zeub2);
 	}
 }
