@@ -28,6 +28,13 @@ public class Visuel {
 		System.out.println("-------------------------------------------------------------");
 	}
 	
+	public static void statut(Player p) {
+		System.out.println("Authority : " + p.getAuthority());
+		System.out.println("Trade : " + p.getTrade());
+		System.out.println("Combat : " + p.getCombat());
+		System.out.println("Bases en jeu : " + p.getBoard().getBases() + "\n");
+	}
+	
 	public static void poser() {
 		System.out.println("Voulez vous poser une carte ?");
 		System.out.println("[1] Oui");
@@ -46,6 +53,7 @@ public class Visuel {
 		System.out.println("Quelle type de partie voulez vous faire ?");
 		System.out.println("[1] Partie Joueur VS Joueur");
 		System.out.println("[2] Partie Joueur VS IA");
+		System.out.println("[3] Partie Joueur VS Joueur DeathMatch");
 
 	}
 	
