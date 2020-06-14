@@ -87,4 +87,11 @@ public class Visuel {
 	public static void Explorer() {
 		System.out.print(", [Ships \ncost=2, \nname=Explorer, \nfaction=Unaligned] \n-----------------------\n");
 	}
+	
+	public static void extension() {
+		System.out.println("Choissisez l'extension de cartes");
+		System.out.println("[1] Extension de base");
+		System.out.println("[2] Extension United");
+		System.out.println("[3] Extension Colony Wars");
+	}
 }

@@ -162,6 +162,42 @@ public class Deck {
 		}
 	}
 	
+	public void deckExtUnited(Deck deckShop) {
+		Ships s1 = new Ships(2,"Alliance Transport","Star Empire/Trade Federation",new Effects("trade",2),null,null,new Effects("authority",4));
+		Ships s2 = new Ships(3,"Blob Bpt","Blob/Machine Cult",new Effects("combat",5),null,null,new Effects("or",new Effects("trade",2),new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",1))));
+		Ships s3 = new Ships(1,"Trade Star","Blob/Star Empire",new Effects("trade",2),null,new Effects("combat",2),null);
+		Ships s4 = new Ships(3,"Alliance Frigate","Star Empire/Trade Federation",new Effects("combat",4),null,null,new Effects("or",new Effects("combat",3),new Effects("authority",5)));
+		Ships s5 = new Ships(2,"Assault Pod","Blob/Star Empire",new Effects("combat",3),null,null,new Effects("draw",1));
+		Ships s6 = new Ships(2,"Unity Fighter","Blob/Machine Cult",new Effects("combat",3),new Effects("scrapTrade",1),null,new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",1)));
+
+		Base b1 = new Base(8,"Embassy Base","Star Empire/Trade Federation",6,new Effects("and",new Effects("draw",2),new Effects("scrapHand",1)),null,null,null,false);
+		Base b2 = new Base(6,"Exchange Point","Blob/Machine Cult",7,new Effects("combat",2),null,null,new Effects("or",new Effects("scrapHand",1),new Effects("scrapTrade",1)),false);
+		Base b3 = new Base(7,"Lookout Post","Machine Cult/Trade Federation",6,new Effects("draw",1),null,null,null,true);
+		Base b4 = new Base(5,"Alliance Landing","Star Empire/Trade Federation",5,new Effects("trade",2),null,null,new Effects("combat",2),true);
+		Base b5 = new Base(6,"Coalition Fortress","Trade Federation/Machine Cult",6,new Effects("trade",2),null,null,new Effects("or",new Effects("combat",2),new Effects("authority",3)),true);
+		Base b6 = new Base(8,"Union Cluster","Blob/Star Empire",8,new Effects("combat",4),null,null,new Effects("draw",1),false);
+		Base b7 = new Base(7,"Unity Station","Blob/Star Empire",6,new Effects("or",new Effects("scrapHand",1),new Effects("scrapGrave",1)),new Effects("scrapTrade",1),null,new Effects("combat",4),true);
+
+		deckShop.addCard(b1);
+		deckShop.addCard(b2);
+		deckShop.addCard(b3);
+		deckShop.addCard(b4);
+		deckShop.addCard(b5);
+		deckShop.addCard(b6);
+		deckShop.addCard(b7);
+		for (int i = 0; i < 2; i++) {
+			deckShop.addCard(s1);
+			deckShop.addCard(s2);
+			deckShop.addCard(s3);
+			deckShop.addCard(s4);
+			deckShop.addCard(s5);
+			deckShop.addCard(s6);
+		}
+		
+		for (int i = 0; i < 3; i++) {
+			
+		}
+	}
 	public void addMission(Deck missionDeck) {
 		Mission m1 = new Mission("Ally","Use Ally abilities from two different factions in the same turn", "Acquire a ship or base of cost four or less for free and put it on top of your deck");
 		Mission m2 = new Mission("Armada","Play seven or more ships in the same turn", "Draw a card. Acquire an explorer for free and put it in your hand");

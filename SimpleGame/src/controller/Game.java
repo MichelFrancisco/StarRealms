@@ -24,19 +24,29 @@ public class Game {
 		Shop shop = new Shop();
 		Player p1 = new Player();
 		Player p2 = new Player();
-
+		Scanner lectureClavier = new Scanner(System.in);
 		p1.initDeck();
 		p2.initDeck();
 
-		// Initialisation des cartes de la premiere extension dans le deckShop
-		deckShop.deckExt1(deckShop);
+		// Initialisation des cartes de l'extension choisi
+		Visuel.extension();
+		int extension = lectureClavier.nextInt();
+		int ext = 0;
+		while (ext == 0) {
+			switch(extension) {
+			case 1: deckShop.deckExt1(deckShop);ext=1;break;
+			case 2: deckShop.deckExtUnited(deckShop);ext=1;break;
+			case 3: deckShop.deckExtColony(deckShop);ext=1;break;
+			default: System.out.println("Valeur incorrecte");
+			}
+		}
 		deckShop.shufDeck();
 		shop.fillShop(deckShop);
 
 		// D�roulement de la partie
 
 		boolean finPose = false;
-		Scanner lectureClavier = new Scanner(System.in);
+		
 
 		int tour = 0;
 		Player player;
@@ -235,19 +245,30 @@ public class Game {
 		Shop shop = new Shop();
 		Player p1 = new Player();
 		Player IA = new Player();
-
+		Scanner lectureClavier = new Scanner(System.in);
 		p1.initDeck();
 		IA.initDeck();
 
 		// Initialisation des cartes de la premiere extension dans le deckShop
-		deckShop.deckExt1(deckShop);
+		// Initialisation des cartes de l'extension choisi
+		Visuel.extension();
+		int extension = lectureClavier.nextInt();
+		int ext = 0;
+		while (ext == 0) {
+			switch(extension) {
+			case 1: deckShop.deckExt1(deckShop);ext=1;break;
+			case 2: deckShop.deckExtUnited(deckShop);ext=1;break;
+			case 3: deckShop.deckExtColony(deckShop);ext=1;break;
+			default: System.out.println("Valeur incorrecte");
+			}
+		}
 		deckShop.shufDeck();
 		shop.fillShop(deckShop);
 
 		// D�roulement de la partie
 
 		boolean finPose = false;
-		Scanner lectureClavier = new Scanner(System.in);
+		
 
 		int tour = 0;
 		Player player;
@@ -513,7 +534,17 @@ public class Game {
 		}
 
 		// Initialisation des cartes de la premiere extension dans le deckShop
-		deckShop.deckExt1(deckShop);
+		Visuel.extension();
+		int extension = lectureClavier.nextInt();
+		int ext = 0;
+		while (ext == 0) {
+			switch(extension) {
+			case 1: deckShop.deckExt1(deckShop);ext=1;break;
+			case 2: deckShop.deckExtUnited(deckShop);ext=1;break;
+			case 3: deckShop.deckExtColony(deckShop);ext=1;break;
+			default: System.out.println("Valeur incorrecte");
+			}
+		}
 		deckShop.shufDeck();
 		shop.fillShop(deckShop);
 
